@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Books - Library System</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>window.location.replace('mybooks.php');</script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">📚 Library System</div>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="book-section">
+        <h2>My Borrowed Books</h2>
+        <ul id="borrowed-list">
+            <!-- Borrowed books will appear here -->
+        </ul>
+    </section>
+
+    <script>
+        const borrowedList = document.getElementById('borrowed-list');
+        let borrowedBooks = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
+
+        borrowedBooks.forEach((book, index) => {
+            const li = document.createElement('li');
+            li.textContent = `${book.title} by ${book.author}`;
+
+            // ✅ Add Return button
+            const returnBtn = document.createElement('button');
+            returnBtn.textContent = "Return";
+            returnBtn.style.marginLeft = "10px";
+
+            returnBtn.addEventListener('click', () => {
+                // Remove book from array
+                borrowedBooks.splice(index, 1);
+                // Update localStorage
+                localStorage.setItem('borrowedBooks', JSON.stringify(borrowedBooks));
+                // Remove from page
+                li.remove();
+            });
+
+            li.appendChild(returnBtn);
+            borrowedList.appendChild(li);
+        });
+    </script>
+
+    <script src="assets/js/script.js/mybooks.js"></script>
+</body>
+</html>

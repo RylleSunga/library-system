@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library System - Dashboard</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <script>window.location.replace('dashboard.php');</script>
+   <header class="navbar">
+    <div class="archive-bar">INTERNET ARCHIVE</div>
+    <div class="logo">
+        <h1>Library System</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="mybooks.html">My Books</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Browse <i class="fa-solid fa-caret-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#"><i class="fa-solid fa-layer-group"></i> Subjects<br><small>Browse books by topic</small></a>
+                    <a href="#"><i class="fa-solid fa-fire"></i> Trending<br><small>Most popular right now</small></a>
+                    <a href="#"><i class="fa-solid fa-book-open"></i> Library Explorer<br><small>Browse the virtual shelves</small></a>
+                    <a href="#"><i class="fa-solid fa-list"></i> Lists<br><small>Reader-curated collections</small></a>
+                    <hr>
+                    <a href="#"><i class="fa-solid fa-folder-open"></i> Collections</a>
+                    <a href="#"><i class="fa-solid fa-school"></i> K-12 Student Library</a>
+                    <a href="#"><i class="fa-solid fa-microphone"></i> Book Talks</a>
+                    <a href="#"><i class="fa-solid fa-shuffle"></i> Random Book</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="search-login">
+        <form class="search-bar">
+            <input type="text" placeholder="Search books, authors...">
+            <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <a href="logout.php" class="login-btn">Logout</a>
+    </div>
+</header>
+
+    <section class="welcome">
+        <p class="eyebrow">Welcome to Open Library</p>
+        <div class="welcome-cards">
+            <div class="card">
+                <i class="fa-solid fa-book-open-reader"></i>
+                <div><h3>Read Free Library Books Online</h3><p>Millions of books available through our digital collection.</p></div>
+            </div>
+            <div class="card">
+                <i class="fa-regular fa-calendar-check"></i>
+                <div><h3>Set a Yearly Reading Goal</h3><p>Learn how to set a yearly reading goal and track what you read.</p></div>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-book-bookmark"></i>
+                <div><h3>Keep Track of your Favorite Books</h3><p>Organize your books using Lists &amp; the Reading Log.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="book-section">
+        <h2>Trending Books</h2>
+        <div class="book-grid">
+            <div class="book-card">
+                <img src="assets/images/book1.jpg" alt="Book 1">
+                <h3>A Nation of Idiots</h3>
+                <p>by Juan Dela Cruz</p>
+                <button>Borrow</button>
+            </div>
+            <div class="book-card">
+                <img src="assets/images/book2.jpg" alt="Book 2">
+                <h3>Glass Sword</h3>
+                <p>by Victoria Aveyard</p>
+                <button>Preview Only</button>
+            </div>
+            <div class="book-card">
+                <img src="assets/images/book3.jpg" alt="Book 3">
+                 <h3>Nausicaä of the Valley of Wind</h3>
+                 <p>by Hayao Miyazaki</p>
+                <button>Borrow</button>
+            </div>
+        </div>
+    </section>
+
+<section class="book-section">
+    <h2>Recently Added</h2>
+    <div class="book-grid">
+        <div class="book-card">
+            <img src="assets/images/book4.jpg" alt="Book 4">
+            <h3>The Midnight Library</h3>
+            <p>by Matt Haig</p>
+            <button>Borrow</button>
+        </div>
+        <div class="book-card">
+            <img src="assets/images/book5.jpg" alt="Book 5">
+            <h3>Atomic Habits</h3>
+            <p>by James Clear</p>
+            <button>Borrow</button>
+        </div>
+        <div class="book-card">
+            <img src="assets/images/book6.jpg" alt="Book 6">
+            <h3>Circe</h3>
+            <p>by Madeline Miller</p>
+            <button>Preview Only</button>
+        </div>
+    </div>
+</section>
+
+    <section class="book-section">
+    <h2>Popular Books</h2>
+    <div class="book-grid">
+        <div class="book-card">
+            <img src="assets/images/book7.jpg" alt="Book 7">
+            <h3>Harry Potter and the Sorcerer’s Stone</h3>
+            <p>by J.K. Rowling</p>
+            <button>Borrow</button>
+        </div>
+        <div class="book-card">
+            <img src="assets/images/book8.jpg" alt="Book 8">
+            <h3>The Hobbit</h3>
+            <p>by J.R.R. Tolkien</p>
+            <button>Borrow</button>
+        </div>
+        <div class="book-card">
+            <img src="assets/images/book9.jpg" alt="Book 9">
+            <h3>Percy Jackson: The Lightning Thief</h3>
+            <p>by Rick Riordan</p>
+            <button>Preview Only</button>
+        </div>
+    </div>
+</section>
+
+<div id="search-modal" class="search-modal" hidden>
+    <div class="search-modal-panel">
+        <div class="search-modal-header">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="modal-search-input" type="search" placeholder="Search books and authors..." autocomplete="off">
+            <button type="button" id="close-search" aria-label="Close search">ESC</button>
+        </div>
+        <div class="search-modal-filters">
+            <label><input type="checkbox" id="readable-only"> Readable Only</label>
+            <select aria-label="Language"><option>Language</option><option>English</option></select>
+        </div>
+        <button type="button" id="see-results">See results</button>
+    </div>
+</div>
+
+<script>
+        const searchInput = document.querySelector('.search-bar input');
+        const bookCards = document.querySelectorAll('.book-card');
+
+        searchInput.addEventListener('keyup', function() {
+            const query = searchInput.value.toLowerCase();
+
+            bookCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const author = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : "";
+
+                if (title.includes(query) || author.includes(query)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Logout button function
+        const logoutLink = document.querySelector('.navbar ul li:last-child a');
+        logoutLink.addEventListener('click', function(e) {
+            e.preventDefault(); // stop default link behavior
+            window.location.href = "index.html"; // go back to login page
+        });
+    </script>
+
+    <script>
+        // Select all buttons inside book cards
+        const bookButtons = document.querySelectorAll('.book-card button');
+
+        bookButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const bookTitle = this.parentElement.querySelector('h3').textContent;
+
+                if (this.textContent === "Borrow") {
+                    alert(`✅ You borrowed "${bookTitle}" successfully!`);
+
+                    // Save to localStorage
+                    let borrowedBooks = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
+                    borrowedBooks.push(bookTitle);
+                    localStorage.setItem('borrowedBooks', JSON.stringify(borrowedBooks));
+                } else if (this.textContent === "Preview Only") {
+                    alert(`👀 "${bookTitle}" is available for preview only.`);
+                }
+            });
+        });
+    </script>
+
+    <script>
+        const searchModal = document.getElementById('search-modal');
+        const modalSearchInput = document.getElementById('modal-search-input');
+        const openSearch = () => {
+            searchModal.hidden = false;
+            modalSearchInput.focus();
+        };
+
+        document.querySelector('.search-bar').addEventListener('submit', event => {
+            event.preventDefault();
+            openSearch();
+        });
+
+        document.getElementById('close-search').addEventListener('click', () => {
+            searchModal.hidden = true;
+        });
+
+        document.getElementById('see-results').addEventListener('click', () => {
+            document.querySelector('.search-bar input').value = modalSearchInput.value;
+            modalSearchInput.dispatchEvent(new Event('keyup'));
+            searchModal.hidden = true;
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') searchModal.hidden = true;
+        });
+
+        document.querySelectorAll('.book-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const book = {
+                    title: card.querySelector('h3').textContent,
+                    author: card.querySelector('p').textContent.replace(/^by\s*/, ''),
+                    image: card.querySelector('img').getAttribute('src'),
+                    summary: 'Explore this title in the library collection.'
+                };
+                localStorage.setItem('selectedBook', JSON.stringify(book));
+                window.location.href = 'book.html';
+            });
+        });
+
+        document.querySelectorAll('.book-card button').forEach(button => {
+            button.addEventListener('click', event => event.stopPropagation());
+        });
+
+        document.querySelectorAll('.dropdown-content a').forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                alert(`${link.textContent.trim().split('\\n')[0]} is ready to explore.`);
+            });
+        });
+    </script>
+
+    <script src="assets/js/script.js/dashboard.js"></script>
+
+</body>
+</html>

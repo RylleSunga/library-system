@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="details-page">
+    <header class="navbar">
+        <div class="archive-bar">INTERNET ARCHIVE</div>
+        <div class="logo"><h1>Library System</h1></div>
+        <nav><ul><li><a href="dashboard.html">Dashboard</a></li><li><a href="mybooks.html">My Books</a></li></ul></nav>
+        <div class="search-login"><a href="logout.php" class="login-btn">Logout</a></div>
+    </header>
+
+    <main class="book-details">
+        <aside class="book-cover-panel">
+            <img id="book-image" alt="Book Cover">
+            <div class="cover-actions"><button type="button" id="preview-book"><i class="fa-regular fa-eye"></i> Preview</button><button type="button" id="search-book"><i class="fa-solid fa-magnifying-glass"></i> Search</button></div>
+            <button type="button" id="read-book" class="primary-action">Read</button>
+            <button type="button" id="add-list">Add to List</button>
+        </aside>
+        <section class="book-info">
+            <div class="detail-tabs"><button class="active" type="button">Overview</button><button type="button">Details</button><button type="button">Reviews</button><button type="button">Related Books</button></div>
+            <p class="book-edition">An edition from the Library System collection</p>
+            <h2 id="book-title"></h2>
+            <p id="book-author" class="book-author"></p>
+            <div class="book-rating">★★★★★ <span>Available to borrow</span></div>
+            <p id="book-summary" class="book-summary"></p>
+            <div class="book-facts"><div><small>Genre</small><strong id="book-genre">Library</strong></div><div><small>Format</small><strong>Online</strong></div><div><small>Language</small><strong>English</strong></div></div>
+            <div class="subject-tags"><strong>SUBJECTS</strong><span id="book-subject">Books</span><span>Library collection</span></div>
+        </section>
+    </main>
+
+    <div id="detail-message" class="detail-message" role="status"></div>
+
+    <script>
+        // Get book data from localStorage
+        const book = JSON.parse(localStorage.getItem('selectedBook'));
+
+        if (book) {
+            document.getElementById('book-title').textContent = book.title;
+            document.getElementById('book-author').textContent = "by " + book.author;
+            document.getElementById('book-image').src = book.image;
+            document.getElementById('book-summary').textContent = book.summary || "No summary available.";
+            document.getElementById('book-genre').textContent = book.genre || "Library";
+            document.getElementById('book-subject').textContent = book.genre || "Books";
+        }
+
+        const message = document.getElementById('detail-message');
+        document.getElementById('preview-book').addEventListener('click', () => message.textContent = 'Preview opened for this book.');
+        document.getElementById('search-book').addEventListener('click', () => window.location.href = 'dashboard.php');
+        document.getElementById('read-book').addEventListener('click', () => message.textContent = 'Reading view is ready for this title.');
+        document.getElementById('add-list').addEventListener('click', () => message.textContent = 'Book added to your list.');
+    </script>
+</body>
+</html>
